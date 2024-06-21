@@ -1,6 +1,6 @@
 # Diverse Chain of Thought (DCoT) Website
 
-This is the repository that contains source code for the [Diverse Chain of Thought Website](https://nerfies.github.io).
+This is the repository that contains source code for the [Code Prompting Website](https://haritzpuerto.github.io/code-prompting/).
 
 This website is based on [Nerfies](https://nerfies.github.io).
 
