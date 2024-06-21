@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs">
+  <meta name="keywords" content="code prompting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    .table td, .table th {
+        text-align: center;
+    }
+    .table td.red-1 {
+        background-color: #f8d7da;
+    }
+    .table td.red-2 {
+        background-color: #f5b7b1;
+    }
+    .table td.red-3 {
+        background-color: #f1948a;
+    }
+    .table td.red-4 {
+        background-color: #ec7063;
+    }
+    .table td.red-5 {
+        background-color: #e74c3c;
+    }
+    .table td.green-1 {
+        background-color: #d4edda;
+    }
+    .table td.green-2 {
+        background-color: #a9dfbf;
+    }
+    .table td.green-3 {
+        background-color: #7dcea0;
+    }
+    .table td.green-4 {
+        background-color: #52be80;
+    }
+    .table td.green-5 {
+        background-color: #27ae60;
+    }
+</style>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://haritzpuerto.github.io">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://haritzpuerto.github.io/DivergentCoTWeb/">
+              Divergent CoT
+            </a>
+            <a class="navbar-item" href="https://square.ukp-lab.de">
+              SQuARE
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://haritzpuerto.github.io/">Haritz Puerto</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://mttk.github.io/">Martin Tutek</a>
+                <sup>1</sup>,</span>
+              <span class="author-block">
+                  <a href="https://adityasomak.github.io/">Somak Aditya</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.xiaodanzhu.com/">Xiaodan Zhu</a><sup>3</sup>,
+              </span>
+              
+              <span class="author-block">
+                <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp">Iryna
+                  Gurevych</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>UKP Lab, Technical University of Darmstadt, Hessian.AI</span>
+              <span class="author-block"><sup>2</sup>IIT Kharagpur</span>
+              <span class="author-block"><sup>3</sup>Queen's University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2401.10065" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2011.12948" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/UKPLab/arxiv2024-conditional-reasoning-llms"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              In this paper, we introduce code prompting, a chain of prompts that transforms a natural language problem into code and directly prompts the LLM using the generated code without resorting to external code execution. 
+              We hypothesize that code prompts can elicit certain reasoning capabilities of LLMs trained on text and code and utilize the proposed method to improve conditional reasoning, the ability to infer different conclusions depending on the fulfillment of certain conditions. 
+            </p>
+            <p> 
+              We find that code prompting exhibits a high-performance boost for multiple LLMs (up to 22.52 percentage points on GPT 3.5, 7.75 on Mixtral, and 16.78 on Mistral) across multiple conditional reasoning datasets. 
+              Our analysis of GPT 3.5 reveals that the code formatting of the input problem is essential for performance improvement.
+              Furthermore, code prompts improve sample efficiency of in-context learning and facilitate state tracking of variables or entities.
+            </p>
+            
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Intro Image -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"></h2>
+          <div class="">
+            <img src="./static/images/intro.png" class="" alt="Intro" />
+          </div>
+        </div>
+      </div>
+      <!--/ Intro Image. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Method -->
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+              We define code prompts as prompts that model
+              a natural language (NL) problem with code. The
+              code contains the logical structure needed to solve
+              the problem, along with the original natural language text as code comments. To solve an NL task
+              with code prompts, we define a chain of prompts
+              that i) transform the NL text into code, and ii) use
+              this code to generate the answer in natural language.
+            </p>
+
+            <p>
+              The generated code is composed of code that closely follows the original NL text. 
+              In particular, it creates variables for key entities in the question and documents and
+              if blocks for each conditional statement in the documents. The figure below exemplifies this transformation.
+            </p>
+              
+            <img src="./static/images/code_transformation.png" class="" alt="code transformation" />
+
+            <p>We experiment with text+code LLMs, i.e., LLMs that are trained to solve natural language and coding tasks. Specifically, we use GPT 3.5 turbo, Mixtral 7x8B, and Mistral 7B</p>
+            <p>We evaluate both prompting formats across multiple conditional reasoning datasets: ConditionalQA, BoardgameQA, and ShARC.</p>
+          </div> 
+        </div>
+      </div>
+      <!--/ Method -->
+
+      
+
+      <!-- Results -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <p>
+              <table class="table table-hover"><thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Prompt</th>
+                  <th>CondQA</th>
+                  <th>ShARC</th>
+                  <th>BGQA-1</th>
+                  <th>BGQA-2</th>
+                  <th>BGQA-3</th>
+                  <th>Delta</th>
+                </tr></thead>
+              <tbody>
+                <tr>
+                  <td rowspan="2">GPT 3.5</td>
+                  <td>Text</td>
+                  <td>58.7</td>
+                  <td>62.95</td>
+                  <td>51.15</td>
+                  <td>37.42</td>
+                  <td>27.77</td>
+                  <td rowspan="2">8.42</td>
+                </tr>
+                <tr>
+                  <td>Code</td>
+                  <td>60.6</td>
+                  <td>54.98</td>
+                  <td>58.67</td>
+                  <td>55.56</td>
+                  <td>50.29</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">Mixtral</td>
+                  <td>Text</td>
+                  <td>48.17</td>
+                  <td>53.77</td>
+                  <td>56.38</td>
+                  <td>39.64</td>
+                  <td>30.15</td>
+                  <td rowspan="2">4.22</td>
+                </tr>
+                <tr>
+                  <td>Code</td>
+                  <td>44.73</td>
+                  <td>59.06</td>
+                  <td>53.33</td>
+                  <td>47.39</td>
+                  <td>44.72</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">Mistral</td>
+                  <td>Text</td>
+                  <td>35.74</td>
+                  <td>43.6</td>
+                  <td>47.4</td>
+                  <td>48.78</td>
+                  <td>47.86</td>
+                  <td rowspan="2">2.74</td>
+                </tr>
+                <tr>
+                  <td>Code</td>
+                  <td>33.28</td>
+                  <td>49.92</td>
+                  <td>53.8</td>
+                  <td>51.27</td>
+                  <td>48.79</td>
+                </tr>
+              </tbody></table>
+              
+            </p>
+
+            <p>
+              Code prompts outperform text prompts in the majority of cases on the test set (11 out of 15).
+              This trend holds true across models, with each achieving peak performance through code prompts for most datasets (i.e., GPT-3.5 in 4/5, Mixtral in 3/5, Mistral in 4/5).
+              Notably, code prompts consistently surpass text prompts on BGQA-2 and BGQA-3, the most reasoning-intensive datasets for all models.
+              This is particularly evident for GPT-3.5, where gains exceed 18 points. 
+            </p>
+
+            
+          </div>
+        </div>
+      </div>
+
+      <!--/ Variable Tracking -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Code Prompts Improve Variable Tracking in LLMs</h2>
+          <p>
+            We hypothesize that one of the reasons for the superior performance of code prompting is an improved ability to identify and track the states of key variables or concepts. 
+            This hypothesis is based on the intuition that, for natural language in general, local context is the most important part to generate the next token.
+            However, generating code is often more challenging because code frequently refers to previously defined functions and variables, which can be dozens or even hundreds of lines apart.
+          </p>
+          
+          <p>
+            To test our hypothesis, we devise the following experiment.
+            After generating each reasoning step in the answer response, we stop the GPT 3.5 Turbo generation and query about all key entities defined in the input prompt.
+            In the case of text prompts, we query the model whether the given facts are true or not, and for code prompts, we query for the value of the (boolean) variables. 
+            In all cases, the model only has to generate <em>True</em> <em>False</em>, <em>string</em>, or <em>unknown</em>.
+            Then, we compare the percentage of errors in text and code prompts. This number represents the <em>memory errors</em> committed by the model.
+            The more memory errors there are, the more difficult it is for the model to track and remember entities/variables.
+          </p>
+          <div class="content has-text-justified">
+            <p>
+              <div class="table-responsive">
+                <table class="table table-hover"><thead>
+                  <tr>
+                    <th>Dataset</th>
+                    <th colspan="2">Correct Ans.</th>
+                    <th colspan="2">Incorrect Ans.</th>
+                  </tr></thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td>Text</td>
+                    <td>Code</td>
+                    <td>Text</td>
+                    <td>Code</td>
+                  </tr>
+                  <tr>
+                    <td>CondQA</td>
+                    <td>71.08</td>
+                    <td>4.39</td>
+                    <td>60.79</td>
+                    <td>11.39</td>
+                  </tr>
+                  <tr>
+                    <td>BGQA-1</td>
+                    <td>39.33</td>
+                    <td>8.84</td>
+                    <td>51.65</td>
+                    <td>22.12</td>
+                  </tr>
+                  <tr>
+                    <td>BGQA-2</td>
+                    <td>44.79</td>
+                    <td>15.04</td>
+                    <td>52.54</td>
+                    <td>24.75</td>
+                  </tr>
+                  <tr>
+                    <td>BGQA-3</td>
+                    <td>54.01</td>
+                    <td>14.21</td>
+                    <td>52.13</td>
+                    <td>16.98</td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+                
+            </p>
+
+            
+            <p> 
+              We observe that Text Prompts make significantly more memory errors than code prompts on all datasets.
+              Specifically, the gap is consistently more than 30% with peaks on CondQA (66.69%) and BGQA-3 (39.8\%). 
+              Therefore, this experiment empirically confirms our hypothesis that code prompts improve state tracking of the key entities and variables when compared to text prompts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Prompts are More Sample-Efficient at Eliciting Reasoning Abilities -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Code Prompts are More Sample-Efficient at Eliciting Reasoning Abilities</h2>
+          <p>
+            Given our observations that code prompts trigger conditional reasoning abilities better than text prompts, we wonder whther code prompts are also more <em>sample-efficient</em> than text prompts?
+            To answer this, we evaluate how the overall performance of GPT 3.5 changes with respect to the number of demonstrations for the two prompting methods
+          </p>
+
+          <img src="./static/images/few_shot.png" class="" alt="bar plot showing preformance for few shot examples" />
+          <p>
+            The figure shows that when we only provide one demonstration per class (i.e., answer type in our datasets), the performance gap is the largest across all datasets.
+            As expected, this gap decreases when we provide more demonstrations. 
+            Moreover, we also observe that code prompts with only one demonstration per class even outperform text prompts with three demonstrations per class, which further shows the sample efficiency of code prompts.
+            These results indicate that code prompts trigger conditional reasoning more efficiently than text prompts on GPT 3.5, and this is one of the reasons for its superior performance.
+          </p>
+
+        </div>
+          
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{puerto2024code,
+        title={Code Prompting Elicits Conditional Reasoning Abilities in Text+ Code LLMs},
+        author={Puerto, Haritz and Tutek, Martin and Aditya, Somak and Zhu, Xiaodan and Gurevych, Iryna},
+        journal={arXiv preprint arXiv:2401.10065},
+        year={2024}
+      }
+</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/pdf/2401.10065">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/UKPLab/arxiv2024-conditional-reasoning-llms/" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>This website is based on <a href="https://nerfies.github.io">Nerfies</a>
+              and licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
