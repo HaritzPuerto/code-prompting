@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-    content="Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs">
+  <meta name="description" content="Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs">
   <meta name="keywords" content="code prompting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs</title>
@@ -72,19 +71,21 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Code Prompting Elicits Conditional Reasoning Abilities in Text+Code LLMs</h1>
+            <h1 class="title is-1 publication-title">Code Prompting Elicits Conditional Reasoning Abilities in Text+Code
+              LLMs</h1>
+            <h2 class="subtitle is-3 publication-subtitle">EMNLP 2024</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://haritzpuerto.github.io/">Haritz Puerto</a><sup>1</sup>,</span>
               <span class="author-block"><a href="https://mttk.github.io/">Martin Tutek</a>
                 <sup>1</sup>,</span>
               <span class="author-block">
-                  <a href="https://adityasomak.github.io/">Somak Aditya</a><sup>2</sup>,
+                <a href="https://adityasomak.github.io/">Somak Aditya</a><sup>2</sup>,
               </span>
               <span class="author-block">
                 <a href="https://www.xiaodanzhu.com/">Xiaodan Zhu</a><sup>3</sup>,
               </span>
-              
+
               <span class="author-block">
                 <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp">Iryna
                   Gurevych</a><sup>1</sup>
@@ -126,7 +127,7 @@
                     <span>Code</span>
                   </a>
                 </span>
-                
+
               </div>
 
             </div>
@@ -146,15 +147,22 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              In this paper, we introduce code prompting, a chain of prompts that transforms a natural language problem into code and directly prompts the LLM using the generated code without resorting to external code execution. 
-              We hypothesize that code prompts can elicit certain reasoning capabilities of LLMs trained on text and code and utilize the proposed method to improve conditional reasoning, the ability to infer different conclusions depending on the fulfillment of certain conditions. 
+              In this paper, we introduce code prompting, a chain of prompts that transforms a natural language problem
+              into code and directly prompts the LLM using the generated code without resorting to external code
+              execution.
+              We hypothesize that code prompts can elicit certain reasoning capabilities of LLMs trained on text and
+              code and utilize the proposed method to improve conditional reasoning, the ability to infer different
+              conclusions depending on the fulfillment of certain conditions.
             </p>
-            <p> 
-              We find that code prompting exhibits a high-performance boost for multiple LLMs (up to 22.52 percentage points on GPT 3.5, 7.75 on Mixtral, and 16.78 on Mistral) across multiple conditional reasoning datasets. 
-              Our analysis of GPT 3.5 reveals that the code formatting of the input problem is essential for performance improvement.
-              Furthermore, code prompts improve sample efficiency of in-context learning and facilitate state tracking of variables or entities.
+            <p>
+              We find that code prompting exhibits a high-performance boost for multiple LLMs (up to 22.52 percentage
+              points on GPT 3.5, 7.75 on Mixtral, and 16.78 on Mistral) across multiple conditional reasoning datasets.
+              Our analysis of GPT 3.5 reveals that the code formatting of the input problem is essential for performance
+              improvement.
+              Furthermore, code prompts improve sample efficiency of in-context learning and facilitate state tracking
+              of variables or entities.
             </p>
-            
+
           </div>
         </div>
       </div>
@@ -193,21 +201,24 @@
             </p>
 
             <p>
-              The generated code is composed of code that closely follows the original NL text. 
+              The generated code is composed of code that closely follows the original NL text.
               In particular, it creates variables for key entities in the question and documents and
-              if blocks for each conditional statement in the documents. The figure below exemplifies this transformation.
+              if blocks for each conditional statement in the documents. The figure below exemplifies this
+              transformation.
             </p>
-              
+
             <img src="./static/images/code_transformation.png" class="" alt="code transformation" />
 
-            <p>We experiment with text+code LLMs, i.e., LLMs that are trained to solve natural language and coding tasks. Specifically, we use GPT 3.5 turbo, Mixtral 7x8B, and Mistral 7B</p>
-            <p>We evaluate both prompting formats across multiple conditional reasoning datasets: ConditionalQA, BoardgameQA, and ShARC.</p>
-          </div> 
+            <p>We experiment with text+code LLMs, i.e., LLMs that are trained to solve natural language and coding
+              tasks. Specifically, we use GPT 3.5 turbo, Mixtral 7x8B, and Mistral 7B</p>
+            <p>We evaluate both prompting formats across multiple conditional reasoning datasets: ConditionalQA,
+              BoardgameQA, and ShARC.</p>
+          </div>
         </div>
       </div>
       <!--/ Method -->
 
-      
+
 
       <!-- Results -->
       <div class="columns is-centered">
@@ -215,7 +226,8 @@
           <h2 class="title is-3">Results</h2>
           <div class="content has-text-justified">
             <p>
-              <table class="table table-hover"><thead>
+            <table class="table table-hover">
+              <thead>
                 <tr>
                   <th>Model</th>
                   <th>Prompt</th>
@@ -225,7 +237,8 @@
                   <th>BGQA-2</th>
                   <th>BGQA-3</th>
                   <th>Delta</th>
-                </tr></thead>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
                   <td rowspan="2">GPT 3.5</td>
@@ -281,18 +294,21 @@
                   <td>51.27</td>
                   <td>48.79</td>
                 </tr>
-              </tbody></table>
-              
+              </tbody>
+            </table>
+
             </p>
 
             <p>
               Code prompts outperform text prompts in the majority of cases on the test set (11 out of 15).
-              This trend holds true across models, with each achieving peak performance through code prompts for most datasets (i.e., GPT-3.5 in 4/5, Mixtral in 3/5, Mistral in 4/5).
-              Notably, code prompts consistently surpass text prompts on BGQA-2 and BGQA-3, the most reasoning-intensive datasets for all models.
-              This is particularly evident for GPT-3.5, where gains exceed 18 points. 
+              This trend holds true across models, with each achieving peak performance through code prompts for most
+              datasets (i.e., GPT-3.5 in 4/5, Mixtral in 3/5, Mistral in 4/5).
+              Notably, code prompts consistently surpass text prompts on BGQA-2 and BGQA-3, the most reasoning-intensive
+              datasets for all models.
+              This is particularly evident for GPT-3.5, where gains exceed 18 points.
             </p>
 
-            
+
           </div>
         </div>
       </div>
@@ -302,28 +318,38 @@
         <div class="column is-full-width">
           <h2 class="title is-3">Code Prompts Improve Variable Tracking in LLMs</h2>
           <p>
-            We hypothesize that one of the reasons for the superior performance of code prompting is an improved ability to identify and track the states of key variables or concepts. 
-            This hypothesis is based on the intuition that, for natural language in general, local context is the most important part to generate the next token.
-            However, generating code is often more challenging because code frequently refers to previously defined functions and variables, which can be dozens or even hundreds of lines apart.
+            We hypothesize that one of the reasons for the superior performance of code prompting is an improved ability
+            to identify and track the states of key variables or concepts.
+            This hypothesis is based on the intuition that, for natural language in general, local context is the most
+            important part to generate the next token.
+            However, generating code is often more challenging because code frequently refers to previously defined
+            functions and variables, which can be dozens or even hundreds of lines apart.
           </p>
-          
+
           <p>
             To test our hypothesis, we devise the following experiment.
-            After generating each reasoning step in the answer response, we stop the GPT 3.5 Turbo generation and query about all key entities defined in the input prompt.
-            In the case of text prompts, we query the model whether the given facts are true or not, and for code prompts, we query for the value of the (boolean) variables. 
-            In all cases, the model only has to generate <em>True</em> <em>False</em>, <em>string</em>, or <em>unknown</em>.
-            Then, we compare the percentage of errors in text and code prompts. This number represents the <em>memory errors</em> committed by the model.
-            The more memory errors there are, the more difficult it is for the model to track and remember entities/variables.
+            After generating each reasoning step in the answer response, we stop the GPT 3.5 Turbo generation and query
+            about all key entities defined in the input prompt.
+            In the case of text prompts, we query the model whether the given facts are true or not, and for code
+            prompts, we query for the value of the (boolean) variables.
+            In all cases, the model only has to generate <em>True</em> <em>False</em>, <em>string</em>, or
+            <em>unknown</em>.
+            Then, we compare the percentage of errors in text and code prompts. This number represents the <em>memory
+              errors</em> committed by the model.
+            The more memory errors there are, the more difficult it is for the model to track and remember
+            entities/variables.
           </p>
           <div class="content has-text-justified">
             <p>
-              <div class="table-responsive">
-                <table class="table table-hover"><thead>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
                   <tr>
                     <th>Dataset</th>
                     <th colspan="2">Correct Ans.</th>
                     <th colspan="2">Incorrect Ans.</th>
-                  </tr></thead>
+                  </tr>
+                </thead>
                 <tbody>
                   <tr>
                     <td></td>
@@ -361,16 +387,17 @@
                     <td>16.98</td>
                   </tr>
                 </tbody>
-                </table>
-              </div>
-                
+              </table>
+            </div>
+
             </p>
 
-            
-            <p> 
+
+            <p>
               We observe that Text Prompts make significantly more memory errors than code prompts on all datasets.
-              Specifically, the gap is consistently more than 30% with peaks on CondQA (66.69%) and BGQA-3 (39.8\%). 
-              Therefore, this experiment empirically confirms our hypothesis that code prompts improve state tracking of the key entities and variables when compared to text prompts.
+              Specifically, the gap is consistently more than 30% with peaks on CondQA (66.69%) and BGQA-3 (39.8\%).
+              Therefore, this experiment empirically confirms our hypothesis that code prompts improve state tracking of
+              the key entities and variables when compared to text prompts.
             </p>
           </div>
         </div>
@@ -381,21 +408,26 @@
         <div class="column is-full-width">
           <h2 class="title is-3">Code Prompts are More Sample-Efficient at Eliciting Reasoning Abilities</h2>
           <p>
-            Given our observations that code prompts trigger conditional reasoning abilities better than text prompts, we wonder whther code prompts are also more <em>sample-efficient</em> than text prompts?
-            To answer this, we evaluate how the overall performance of GPT 3.5 changes with respect to the number of demonstrations for the two prompting methods
+            Given our observations that code prompts trigger conditional reasoning abilities better than text prompts,
+            we wonder whther code prompts are also more <em>sample-efficient</em> than text prompts?
+            To answer this, we evaluate how the overall performance of GPT 3.5 changes with respect to the number of
+            demonstrations for the two prompting methods
           </p>
 
           <img src="./static/images/few_shot.png" class="" alt="bar plot showing preformance for few shot examples" />
           <p>
-            The figure shows that when we only provide one demonstration per class (i.e., answer type in our datasets), the performance gap is the largest across all datasets.
-            As expected, this gap decreases when we provide more demonstrations. 
-            Moreover, we also observe that code prompts with only one demonstration per class even outperform text prompts with three demonstrations per class, which further shows the sample efficiency of code prompts.
-            These results indicate that code prompts trigger conditional reasoning more efficiently than text prompts on GPT 3.5, and this is one of the reasons for its superior performance.
+            The figure shows that when we only provide one demonstration per class (i.e., answer type in our datasets),
+            the performance gap is the largest across all datasets.
+            As expected, this gap decreases when we provide more demonstrations.
+            Moreover, we also observe that code prompts with only one demonstration per class even outperform text
+            prompts with three demonstrations per class, which further shows the sample efficiency of code prompts.
+            These results indicate that code prompts trigger conditional reasoning more efficiently than text prompts on
+            GPT 3.5, and this is one of the reasons for its superior performance.
           </p>
 
         </div>
-          
-    </div>
+
+      </div>
   </section>
 
 
@@ -419,7 +451,8 @@
         <a class="icon-link" href="https://arxiv.org/pdf/2401.10065">
           <i class="fas fa-file-pdf"></i>
         </a>
-        <a class="icon-link" href="https://github.com/UKPLab/arxiv2024-conditional-reasoning-llms/" class="external-link" disabled>
+        <a class="icon-link" href="https://github.com/UKPLab/arxiv2024-conditional-reasoning-llms/"
+          class="external-link" disabled>
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -427,11 +460,10 @@
         <div class="column is-8">
           <div class="content">
             <p>This website is based on <a href="https://nerfies.github.io">Nerfies</a>
-              and licensed under a <a rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              and licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
                 Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
-            
+
           </div>
         </div>
       </div>
